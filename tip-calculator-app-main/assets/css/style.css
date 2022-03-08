@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: 'Space Mono';
+}
+
+:root {
+    --strong-cyan: hsl(172, 67%, 45%);
+    --very-dark-cyan: hsl(183, 100%, 15%);
+    --dark-grayish-cyan: hsl(186, 14%, 43%);
+    --grayish-cyan: hsl(184, 14%, 56%);
+    --light-grayish-cyan: hsl(185, 41%, 84%);
+    --very-light-grayish-cyan: hsl(189, 41%, 97%);
+    --white: hsl(0, 0%, 100%);
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    background-color: var(--light-grayish-cyan);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 5rem;
+}
+
+input {
+    cursor: pointer;
+    text-align: right;
+    font-size: 2.4rem;
+    background-color: var(--very-light-grayish-cyan);
+    color: var(--very-dark-cyan);
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+}
+
+input::placeholder {
+    color: var(--grayish-cyan);
+}
+
+input:focus {
+    border: 2px solid var(--strong-cyan);
+}
+
+label {
+    color: var(--dark-grayish-cyan);
+    font-size: 1.4rem;
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--very-dark-cyan);
+    color: var(--white);
+    font-size: 1.8rem;
+    border-radius: 4px;
+    padding: 0.5rem 0;
+}
+
+button:hover {
+    background-color: var(--strong-cyan);
+}
+
+h4 {
+    font-size: 1.4rem;
+    color: var(--white);
+}
+
+h5 {
+    color: var(--very-light-grayish-cyan);
+    opacity: 0.6;
+}
+
+span {
+    font-size: 3.8rem;
+    color: var(--strong-cyan);
+}
+
+section#container {
+    display: flex;
+    gap: 3rem;
+    border-radius: 16px;
+    padding: 3rem 3rem 3rem 4rem;
+    background-color: var(--white);
+}
+
+.tip-calculator-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 0;
+    min-height: 350px;
+    min-width: 315px;
+}
+
+.tip-calculator-container > .bill {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.tip-calculator-container .bill .bill-input {
+    position: relative;
+}
+
+.tip-calculator-container .bill .bill-input > input {
+    width: 100%
+}
+
+.tip-calculator-container .bill .bill-input > img {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+}
+
+.tip-calculator-container .select-tip{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tip-calculator-container .select-tip > .tip-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 98px);
+    gap: 10px;
+}
+
+.tip-calculator-container .select-tip .tip-buttons > input {
+    font-size: 2rem;
+    text-align: center;
+    border-radius: 4px;
+    padding: 0;
+}
+
+.tip-calculator-container > .number-people {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.tip-calculator-container .number-people .number-people-input {
+    position: relative;
+}
+
+.tip-calculator-container .number-people .number-people-input > input {
+    width: 100%;
+}
+
+.tip-calculator-container .number-people .number-people-input > img {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+}
+
+.tip-result-container {
+    padding: 4rem 3rem 3rem 3rem;
+    border-radius: 12px;
+    background-color: var(--very-dark-cyan);
+    width: 100%;
+    min-width: 350px;
+    /*min-height: 350px;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tip-results {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tip-amount, .total-person  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tip-result-container > button {
+    background-color: var(--strong-cyan);
+    width: 100%;
+}
+
+@media screen and (min-width: 375px) and (max-width: 800px) {
+    section#container {
+        flex-direction: column;
+        padding: 3rem 1rem;
+    }
+
+    .tip-calculator-container {
+        padding: 1rem 2rem;
+    }
+
+    .tip-calculator-container .select-tip > .tip-buttons {
+        grid-template-columns: repeat(2, minmax(100px, 150px));
+    }
+
+    .tip-result-container { 
+        padding: 3rem 2rem 2rem 2rem;
+        justify-content: initial;
+        gap: 20px;
+    }
+}
+
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }

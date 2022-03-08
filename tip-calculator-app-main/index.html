@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Tip calculator app</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="shortcut icon" href="./assets/images/favicon-32x32.png" type="image/x-icon">
+</head>
+<body>
+  <img src="assets/images/logo.svg" alt="">
+  <section id="container">
+    <div class="tip-calculator-container">
+
+      <div class="bill">
+        <label for="bill">Bill</label>
+        <div class="bill-input">
+          <img src="assets/images/icon-dollar.svg" alt="icon dollar">
+          <input type="text" id="bill" placeholder="0">
+        </div>
+      </div>
+
+     
+      <div class="select-tip">
+        <label for="">Select Tip %</label>
+        <div class="tip-buttons">
+          <button>5%</button>
+          <button>10%</button>
+          <button>15%</button>
+          <button>25%</button>
+          <button>50%</button>
+          <input type="text" placeholder="Custom">
+        </div>
+      </div>
+      
+
+      <div class="number-people">
+        <label for="number-people">Number of People</label>
+        <div class="number-people-input">
+          <img src="assets/images/icon-person.svg" alt="icon person">
+          <input type="text" id="number-people" placeholder="0">
+        </div>
+      </div>
+    </div>
+  
+    <div class="tip-result-container">
+      <div class="tip-results">
+        <div class="tip-amount">
+          <div>
+            <h4>Tip Amount</h3>
+            <h5>/ person</h4>
+          </div>
+          <span>$0.00</span>
+        </div>
+
+        <div class="total-person">
+          <div>
+            <h4>Total</h3>
+            <h5>/ person</h4>
+          </div>
+          <span>$0.00</span>
+        </div>
+      </div>
+
+      <button>Reset</button>
+    </div>
+  </section>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Geovani Silva</a>.
+  </div>
+</body>
+</html>
