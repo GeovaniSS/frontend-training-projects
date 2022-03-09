@@ -41,7 +41,7 @@ input {
     background-color: var(--very-light-grayish-cyan);
     color: var(--very-dark-cyan);
     border-radius: 4px;
-    padding: 0.5rem 1rem;
+    padding: 0.2rem 1.5rem;
 }
 
 input::placeholder {
@@ -52,23 +52,34 @@ input:focus {
     border: 2px solid var(--strong-cyan);
 }
 
+input.error {
+    border: 2px solid rgba(253, 0, 0, 0.603);;
+}
+
 label {
     color: var(--dark-grayish-cyan);
-    font-size: 1.4rem;
+    font-size: 1.6rem;
 }
 
 button {
     cursor: pointer;
     background-color: var(--very-dark-cyan);
     color: var(--white);
-    font-size: 1.8rem;
+    font-size: 2rem;
     border-radius: 4px;
     padding: 0.5rem 0;
 }
 
 button:hover {
-    background-color: var(--strong-cyan);
+    background-color: var(--light-grayish-cyan);
+    color: var(--very-dark-cyan);
 }
+
+button.active {
+    background-color: var(--strong-cyan);
+    color: var(--very-dark-cyan);
+}
+
 
 h4 {
     font-size: 1.4rem;
@@ -81,17 +92,29 @@ h5 {
 }
 
 span {
-    font-size: 3.8rem;
+    font-size: 4.2rem;
     color: var(--strong-cyan);
 }
 
+/* 
+########################################
+#            Section Container         #
+########################################
+*/
+
 section#container {
     display: flex;
-    gap: 3rem;
+    gap: 4rem;
     border-radius: 16px;
     padding: 3rem 3rem 3rem 4rem;
     background-color: var(--white);
 }
+
+/* 
+########################################
+#        Tip Calculator Container      #
+########################################
+*/
 
 .tip-calculator-container {
     width: 100%;
@@ -100,83 +123,132 @@ section#container {
     justify-content: space-between;
     padding: 1rem 0;
     min-height: 350px;
-    min-width: 315px;
+    max-width: 350px;
 }
 
-.tip-calculator-container > .bill {
+/* 
+########################################
+#             Bill Container           #
+#              Bill Label              #
+#              Bill Input              #
+########################################
+*/
+
+.tip-calculator-container > .bill-container {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-.tip-calculator-container .bill .bill-input {
+.tip-calculator-container .bill-container > .bill-label {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tip-calculator-container .bill-container .bill-label > span {
+    font-size: 1.6rem;
+    color: rgba(253, 0, 0, 0.603);
+}
+
+.tip-calculator-container .bill-container > .bill-input {
     position: relative;
 }
 
-.tip-calculator-container .bill .bill-input > input {
-    width: 100%
+.tip-calculator-container .bill-container .bill-input > input {
+    width: 100%;
 }
 
-.tip-calculator-container .bill .bill-input > img {
+.tip-calculator-container .bill-container .bill-input > img {
     position: absolute;
     top: 50%;
     left: 5%;
     transform: translateY(-50%);
 }
 
-.tip-calculator-container .select-tip{
+/* 
+########################################
+#          Select Tip Container        #
+#             Tip Buttons              #
+########################################
+*/
+
+.tip-calculator-container .select-tip-container{
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.tip-calculator-container .select-tip > .tip-buttons {
+.tip-calculator-container .select-tip-container > .tip-buttons {
     display: grid;
-    grid-template-columns: repeat(3, 98px);
+    grid-template-columns: repeat(3, 105px);
     gap: 10px;
 }
 
-.tip-calculator-container .select-tip .tip-buttons > input {
+.tip-calculator-container .select-tip-container .tip-buttons > input {
     font-size: 2rem;
     text-align: center;
     border-radius: 4px;
     padding: 0;
 }
 
-.tip-calculator-container > .number-people {
+/* 
+########################################
+#         Number People Container      #
+#          Number People Label         #
+#          Number People Input         #
+########################################
+*/
+
+.tip-calculator-container > .number-people-container {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-.tip-calculator-container .number-people .number-people-input {
+.tip-calculator-container .number-people-container > .number-people-label {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tip-calculator-container .number-people-container .number-people-label > span {
+    font-size: 1.6rem;
+    color: rgba(253, 0, 0, 0.603);
+}
+
+.tip-calculator-container .number-people-container > .number-people-input {
     position: relative;
 }
 
-.tip-calculator-container .number-people .number-people-input > input {
+.tip-calculator-container .number-people-container .number-people-input > input {
     width: 100%;
 }
 
-.tip-calculator-container .number-people .number-people-input > img {
+.tip-calculator-container .number-people-container .number-people-input > img {
     position: absolute;
     top: 50%;
     left: 5%;
     transform: translateY(-50%);
 }
 
+/* 
+########################################
+#         Tip Result Container         #
+#             Tip Results              #
+########################################
+*/
+
 .tip-result-container {
     padding: 4rem 3rem 3rem 3rem;
     border-radius: 12px;
     background-color: var(--very-dark-cyan);
     width: 100%;
-    min-width: 350px;
-    /*min-height: 350px;*/
+    min-width: 360px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.tip-results {
+.tip-result-container > .tip-results {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -189,31 +261,60 @@ section#container {
 }
 
 .tip-result-container > button {
+    text-transform: uppercase;
     background-color: var(--strong-cyan);
+    color: var(--very-dark-cyan);
+    padding: 0.7rem 0;
+    font-size: 1.8rem;
     width: 100%;
 }
 
-@media screen and (min-width: 375px) and (max-width: 800px) {
+.tip-result-container > button.active {
+    background-color: var(--strong-cyan);
+    color: var(--very-dark-cyan);
+}
+
+/* 
+########################################
+#            Mobile Layout             #
+########################################
+*/
+
+@media screen and (max-width: 800px) {
     section#container {
         flex-direction: column;
         padding: 3rem 1rem;
+        gap: 2rem;
     }
 
     .tip-calculator-container {
         padding: 1rem 2rem;
+        max-width: 350px;
+        min-height: 400px;
+        margin: auto;
     }
 
-    .tip-calculator-container .select-tip > .tip-buttons {
+    .tip-calculator-container .select-tip-container > .tip-buttons {
         grid-template-columns: repeat(2, minmax(100px, 150px));
     }
 
-    .tip-result-container { 
+    .tip-result-container {
+        min-width: 0px;
+        max-width: 310px; 
+        margin: auto;
         padding: 3rem 2rem 2rem 2rem;
         justify-content: initial;
         gap: 20px;
     }
-}
 
+    .tip-result-container .tip-results {
+        gap: 0px;
+    }
+
+    .tip-results span {
+        font-size: 3.4rem;
+    }
+}
 
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }

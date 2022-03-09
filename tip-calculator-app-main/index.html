@@ -12,34 +12,37 @@
   <img src="assets/images/logo.svg" alt="">
   <section id="container">
     <div class="tip-calculator-container">
-
-      <div class="bill">
-        <label for="bill">Bill</label>
+      <div class="bill-container">
+        <div class="bill-label">
+          <label for="bill">Bill</label>
+          <!--<span>Can't be zero</span> Adicionar com JavaScript-->
+        </div>
         <div class="bill-input">
           <img src="assets/images/icon-dollar.svg" alt="icon dollar">
-          <input type="text" id="bill" placeholder="0">
+          <input type="number" id="bill" placeholder="0"> <!--class="error" com JavaScript-->
         </div>
       </div>
-
      
-      <div class="select-tip">
+      <div class="select-tip-container">
         <label for="">Select Tip %</label>
         <div class="tip-buttons">
-          <button>5%</button>
-          <button>10%</button>
-          <button>15%</button>
-          <button>25%</button>
-          <button>50%</button>
-          <input type="text" placeholder="Custom">
+          <button class="5%">5%</button>
+          <button class="10%">10%</button>
+          <button class="15%">15%</button>
+          <button class="25%">25%</button>
+          <button class="50%">50%</button>
+          <input type="text" placeholder="Custom" class="custom">
         </div>
       </div>
-      
 
-      <div class="number-people">
-        <label for="number-people">Number of People</label>
+      <div class="number-people-container">
+        <div class="number-people-label">
+          <label for="number-people">Number of People</label>
+          <!--<span>Can't be zero</span> Adicionar com JavaScript-->
+        </div>
         <div class="number-people-input">
           <img src="assets/images/icon-person.svg" alt="icon person">
-          <input type="text" id="number-people" placeholder="0">
+          <input type="number" id="number-people" placeholder="0"> <!--class="error" com JavaScript-->
         </div>
       </div>
     </div>
@@ -51,7 +54,7 @@
             <h4>Tip Amount</h3>
             <h5>/ person</h4>
           </div>
-          <span>$0.00</span>
+          <span id="tip-amount-result">$0.00</span>
         </div>
 
         <div class="total-person">
@@ -59,11 +62,10 @@
             <h4>Total</h3>
             <h5>/ person</h4>
           </div>
-          <span>$0.00</span>
+          <span id="total-person-result">$0.00</span>
         </div>
       </div>
-
-      <button>Reset</button>
+      <button id="reset-tip-calculation">Reset</button>
     </div>
   </section>
 
@@ -71,5 +73,6 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Geovani Silva</a>.
   </div>
+  <script src="./assets/js/main.js"></script>
 </body>
 </html>
