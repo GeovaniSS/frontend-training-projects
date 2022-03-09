@@ -1,5 +1,5 @@
 // Calculadora de Gorjeta 
-// 1° - Validações dos inputs Bill e Number of people
+// 1° - Validações dos inputs Bill e Number of peoples
 // 2° - Seleção da porcentagem da gorjeta
 // 3° - Cálculo da Gorjeta por pessoa e o Total da Conta
 
