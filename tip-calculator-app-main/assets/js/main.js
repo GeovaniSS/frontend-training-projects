@@ -1,37 +1,43 @@
-// Calculadora de Gorjeta 
-// 1° - Validações dos inputs Bill e Number of peoples
-// 2° - Seleção da porcentagem da gorjeta
-// 3° - Cálculo da Gorjeta por pessoa e o Total da Conta
-
 const inputBill = document.querySelector('#bill')
 const inputNumberPeople = document.querySelector('#number-people')
-const tipButtons = document.querySelector('.tip-buttons')
+const tipPorcentageButtons = document.querySelector('.tip-buttons')
 
 const tipAmountResult = document.querySelector('#tip-amount-result')
 const totalPerPersonResult = document.querySelector('#total-person-result')
 const resetTipCalculationButton = document.querySelector('#reset-tip-calculation')
 
+let tipPorcentageText; 
 
-const handleBill = () => {
-    const inputBillIsValid = validateInputElement(inputBill)
+const handleBillChange = () => {
+    const inputBillIsValid = validateInputElement(inputBill) 
+    const errorMessage = document.querySelector('.invalid-message.bill')
 
     if(!inputBillIsValid) {
-        return inputBill.classList.add('error')
+        inputBill.classList.add('error')
+        errorMessage.style.display = 'block'
+        return
     }
 
     inputBill.classList.remove('error')
+    errorMessage.style.display = 'none'
+
     const bill = Number(inputBill.value)
     return bill
 }
 
-const handleNumberOfPeople = () => {
+const handleNumberPeopleChange = () => {
     const inputNumberPeopleIsValid = validateInputElement(inputNumberPeople)
+    const errorMessage = document.querySelector('.invalid-message.people')
     
     if(!inputNumberPeopleIsValid) {
-        return inputNumberPeople.classList.add('error')
+        inputNumberPeople.classList.add('error')
+        errorMessage.style.display = 'block'
+        return
     }
 
     inputNumberPeople.classList.remove('error')
+    errorMessage.style.display = 'none'
+
     const numberOfPeople = Number(inputNumberPeople.value)
     return numberOfPeople
 }
@@ -39,34 +45,41 @@ const handleNumberOfPeople = () => {
 const validateInputElement = input => Number(input.value) > 0
 
 
-const handleTipButtons = (el) => {
-    const tipButton = tipButtons.children
-    let tipText; 
+const handleTipPorcentageButtons = (el) => {
+    const tipButtons = tipPorcentageButtons.children
     
-    for (let tip of tipButton) {
-        tip.classList.remove('active')
-        const tipButtonIsBeingClicked = tip === el
+    for (let tipButton of tipButtons) {
+        tipButton.classList.remove('active')
+        const tipButtonIsBeingClicked = tipButton === el
         if(tipButtonIsBeingClicked) {
-            tip.classList.add('active')
-            tipText = tip.innerText.replace('%', '')
-
-            if (tip.classList.contains('custom')) {
-                tipText = tip.value
-            }
+            tipButton.classList.add('active')
+            tipPorcentageText = tipButton.innerText.replace('%', '')
+            if (tipButton.classList.contains('custom')) {
+                const tipInputCustomIsValid = validateInputElement(tipButton)
+                if(!tipInputCustomIsValid) return tipButton.classList.add('error')
+                tipButton.classList.remove('error')
+                tipPorcentageText = tipButton.value
+            } 
         }
     }
 
-    calculateTip(tipText)
+    calculateTip()
 }
 
-const calculateTip = (tipText) => {
-    const bill = handleBill()
-    const numberOfPeople = handleNumberOfPeople()
-    const tipPorcentage = Number(tipText)
-    
-    const tipAmountPerPerson = (bill * tipPorcentage/100) / numberOfPeople
-    const totalPerPerson = (bill + bill * tipPorcentage/100) / numberOfPeople 
+const calculateTip = () => {
+    const bill = handleBillChange()
+    const numberOfPeople = handleNumberPeopleChange()
+    const tipPorcentage = Number(tipPorcentageText)/100
 
+    if(!bill || !numberOfPeople || !tipPorcentage) return
+    
+    const tipAmountPerPerson = (bill * tipPorcentage) / numberOfPeople
+    const totalPerPerson = (bill + bill * tipPorcentage) / numberOfPeople 
+
+    updateTipResult(tipAmountPerPerson, totalPerPerson)
+}
+
+const updateTipResult = (tipAmountPerPerson, totalPerPerson) => {
     tipAmountResult.innerText = `$${tipAmountPerPerson.toFixed(2)}`
     totalPerPersonResult.innerText = `$${totalPerPerson.toFixed(2)}`
 }
@@ -78,25 +91,34 @@ const resetTipCalculation = () => {
     inputBill.classList.remove('error')
     inputNumberPeople.classList.remove('error')
 
-    const tipButton = tipButtons.children
-    for (let tip of tipButton) {
-        tip.classList.remove('active')
+    const errorMessage = document.querySelectorAll('.invalid-message')
+    for (let message of errorMessage) {
+        message.style.display = 'none'
     }
 
-    tipAmountResult.innerText = '$0.00'
-    totalPerPersonResult.innerText = '$0.00'
+    const tipButtons = tipPorcentageButtons.children
+    for (let tipButton of tipButtons) {
+        tipButton.classList.remove('active')
+    }
+
+    updateTipResult(0, 0)
 }
 
 
-inputBill.addEventListener('change', () => handleBill())
-inputNumberPeople.addEventListener('change', () => handleNumberOfPeople())
-tipButtons.addEventListener('click', (e) => {
-    const el = e.target
-    handleTipButtons(el)
+inputBill.addEventListener('change', () => {
+    handleBillChange()
 })
-tipButtons.addEventListener('change', (e) => {
+inputNumberPeople.addEventListener('change', () => {
+    handleNumberPeopleChange()
+    calculateTip()
+})
+tipPorcentageButtons.addEventListener('click', (e) => {
     const el = e.target
-    handleTipButtons(el)
+    handleTipPorcentageButtons(el)
+})
+tipPorcentageButtons.addEventListener('change', (e) => {
+    const el = e.target
+    handleTipPorcentageButtons(el)
 })
 resetTipCalculationButton.addEventListener('click', () => resetTipCalculation())
 
