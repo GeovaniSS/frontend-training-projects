@@ -1,14 +1,11 @@
 const inputBill = document.querySelector('#bill')
 const inputNumberPeople = document.querySelector('#number-people')
+const inputTipPorcentage = document.querySelector('.custom')
 const tipPorcentageButtons = document.querySelector('.tip-buttons')
-
-const tipAmountResult = document.querySelector('#tip-amount-result')
-const totalPerPersonResult = document.querySelector('#total-person-result')
-const resetTipCalculationButton = document.querySelector('#reset-tip-calculation')
-
+const tipResetButton = document.querySelector('#reset-tip-calculation')
 let tipPorcentageText; 
 
-const handleBillChange = () => {
+const handleBillInputChange = () => {
     const inputBillIsValid = validateInputElement(inputBill) 
     const errorMessage = document.querySelector('.invalid-message.bill')
 
@@ -21,11 +18,10 @@ const handleBillChange = () => {
     inputBill.classList.remove('error')
     errorMessage.style.display = 'none'
 
-    const bill = Number(inputBill.value)
-    return bill
+    calculateTip()
 }
 
-const handleNumberPeopleChange = () => {
+const handleNumberPeopleInputChange = () => {
     const inputNumberPeopleIsValid = validateInputElement(inputNumberPeople)
     const errorMessage = document.querySelector('.invalid-message.people')
     
@@ -38,14 +34,22 @@ const handleNumberPeopleChange = () => {
     inputNumberPeople.classList.remove('error')
     errorMessage.style.display = 'none'
 
-    const numberOfPeople = Number(inputNumberPeople.value)
-    return numberOfPeople
+    calculateTip()
+}
+
+const handleTipPorcentageInputChange = () => {
+    const customTipInputIsValid = validateInputElement(inputTipPorcentage)
+    if(!customTipInputIsValid) return inputTipPorcentage.classList.add('error')
+    inputTipPorcentage.classList.remove('error')
+    tipPorcentageText = inputTipPorcentage.value
+
+    calculateTip()
 }
 
 const validateInputElement = input => Number(input.value) > 0
 
 
-const handleTipPorcentageButtons = (el) => {
+const handleTipPorcentageButtonClick = (el) => {
     const tipButtons = tipPorcentageButtons.children
     
     for (let tipButton of tipButtons) {
@@ -54,12 +58,6 @@ const handleTipPorcentageButtons = (el) => {
         if(tipButtonIsBeingClicked) {
             tipButton.classList.add('active')
             tipPorcentageText = tipButton.innerText.replace('%', '')
-            if (tipButton.classList.contains('custom')) {
-                const tipInputCustomIsValid = validateInputElement(tipButton)
-                if(!tipInputCustomIsValid) return tipButton.classList.add('error')
-                tipButton.classList.remove('error')
-                tipPorcentageText = tipButton.value
-            } 
         }
     }
 
@@ -67,8 +65,8 @@ const handleTipPorcentageButtons = (el) => {
 }
 
 const calculateTip = () => {
-    const bill = handleBillChange()
-    const numberOfPeople = handleNumberPeopleChange()
+    const bill = Number(inputBill.value)
+    const numberOfPeople = Number(inputNumberPeople.value)
     const tipPorcentage = Number(tipPorcentageText)/100
 
     if(!bill || !numberOfPeople || !tipPorcentage) return
@@ -80,16 +78,21 @@ const calculateTip = () => {
 }
 
 const updateTipResult = (tipAmountPerPerson, totalPerPerson) => {
+    const tipAmountResult = document.querySelector('#tip-amount-result')
+    const totalPerPersonResult = document.querySelector('#total-person-result')
+
     tipAmountResult.innerText = `$${tipAmountPerPerson.toFixed(2)}`
     totalPerPersonResult.innerText = `$${totalPerPerson.toFixed(2)}`
 }
 
-const resetTipCalculation = () => {
+const handleTipResetButtonClick = () => {
     inputBill.value = ''
     inputNumberPeople.value = ''
+    inputTipPorcentage.value = ''
 
     inputBill.classList.remove('error')
     inputNumberPeople.classList.remove('error')
+    inputTipPorcentage.classList.remove('error')
 
     const errorMessage = document.querySelectorAll('.invalid-message')
     for (let message of errorMessage) {
@@ -105,21 +108,13 @@ const resetTipCalculation = () => {
 }
 
 
-inputBill.addEventListener('change', () => {
-    handleBillChange()
-})
-inputNumberPeople.addEventListener('change', () => {
-    handleNumberPeopleChange()
-    calculateTip()
-})
+inputBill.addEventListener('change', () => handleBillInputChange())
+inputNumberPeople.addEventListener('change', () => handleNumberPeopleInputChange())
+inputTipPorcentage.addEventListener('change', () => handleTipPorcentageInputChange())
 tipPorcentageButtons.addEventListener('click', (e) => {
     const el = e.target
-    handleTipPorcentageButtons(el)
+    handleTipPorcentageButtonClick(el)
 })
-tipPorcentageButtons.addEventListener('change', (e) => {
-    const el = e.target
-    handleTipPorcentageButtons(el)
-})
-resetTipCalculationButton.addEventListener('click', () => resetTipCalculation())
+tipResetButton.addEventListener('click', () => handleTipResetButtonClick())
 
 
