@@ -5,35 +5,42 @@ const tipPorcentageButtons = document.querySelector('.tip-buttons')
 const tipResetButton = document.querySelector('#reset-tip-calculation')
 let tipPorcentageText; 
 
+const invalidInputMessage = document.createElement('span')
+invalidInputMessage.innerText = "Can't be zero"
+
 const handleBillInputChange = () => {
     const inputBillIsValid = validateInputElement(inputBill) 
-    const errorMessage = document.querySelector('.invalid-message.bill')
+    const billMessageContainer = document.querySelector('.bill-label')
 
     if(!inputBillIsValid) {
         inputBill.classList.add('error')
-        errorMessage.style.display = 'block'
+        billMessageContainer.appendChild(invalidInputMessage)
         return
     }
 
-    inputBill.classList.remove('error')
-    errorMessage.style.display = 'none'
+    if(billMessageContainer.contains(invalidInputMessage)) {
+        billMessageContainer.removeChild(invalidInputMessage)
+    } 
 
+    inputBill.classList.remove('error')
     calculateTip()
 }
 
 const handleNumberPeopleInputChange = () => {
     const inputNumberPeopleIsValid = validateInputElement(inputNumberPeople)
-    const errorMessage = document.querySelector('.invalid-message.people')
+    const numberPeopleMessageContainer = document.querySelector('.number-people-label')
     
     if(!inputNumberPeopleIsValid) {
         inputNumberPeople.classList.add('error')
-        errorMessage.style.display = 'block'
+        numberPeopleMessageContainer.appendChild(invalidInputMessage)
         return
     }
 
-    inputNumberPeople.classList.remove('error')
-    errorMessage.style.display = 'none'
+    if(numberPeopleMessageContainer.contains(invalidInputMessage)) {
+        numberPeopleMessageContainer.removeChild(invalidInputMessage)
+    }
 
+    inputNumberPeople.classList.remove('error')
     calculateTip()
 }
 
@@ -94,10 +101,10 @@ const handleTipResetButtonClick = () => {
     inputNumberPeople.classList.remove('error')
     inputTipPorcentage.classList.remove('error')
 
-    const errorMessage = document.querySelectorAll('.invalid-message')
-    for (let message of errorMessage) {
-        message.style.display = 'none'
-    }
+    const billMessageContainer = document.querySelector('.bill-label')
+    const numberPeopleMessageContainer = document.querySelector('.number-people-label')
+    billMessageContainer.removeChild(invalidInputMessage)
+    numberPeopleMessageContainer.removeChild(invalidInputMessage)
 
     const tipButtons = tipPorcentageButtons.children
     for (let tipButton of tipButtons) {

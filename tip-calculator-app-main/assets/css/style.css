@@ -96,12 +96,6 @@ span {
     color: var(--strong-cyan);
 }
 
-span.invalid-message {
-    display: none;
-    color: rgba(253, 0, 0, 0.603);
-    font-size: 1.6rem;
-}
-
 /* 
 ########################################
 #            Section Container         #
@@ -149,6 +143,11 @@ section#container {
 .tip-calculator-container .bill-container > .bill-label {
     display: flex;
     justify-content: space-between;
+}
+
+.tip-calculator-container .bill-container .bill-label > span {
+    color: rgba(253, 0, 0, 0.603);
+    font-size: 1.6rem;
 }
 
 .tip-calculator-container .bill-container > .bill-input {
@@ -209,6 +208,11 @@ section#container {
 .tip-calculator-container .number-people-container > .number-people-label {
     display: flex;
     justify-content: space-between;
+}
+
+.tip-calculator-container .number-people-container .number-people-label > span {
+    color: rgba(253, 0, 0, 0.603);
+    font-size: 1.6rem;
 }
 
 .tip-calculator-container .number-people-container > .number-people-input {
