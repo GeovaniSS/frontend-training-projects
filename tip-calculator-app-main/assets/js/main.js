@@ -122,7 +122,7 @@ inputTipPorcentage.addEventListener('change', () => handleTipPorcentageInputChan
 inputNumberPeople.addEventListener('change', () => handleNumberPeopleInputChange())
 tipPorcentageButtons.addEventListener('click', (e) => {
     const el = e.target
-    if (el.classList.contains('custom')) return
+    //if (el.classList.contains('custom')) return
     handleTipPorcentageButtonClick(el)
 })
 tipResetButton.addEventListener('click', () => handleTipResetButtonClick())
