@@ -1,7 +1,7 @@
 <h1 align="center">Tip calculator app</h1>
 
 <p align="center">
-     <a href="#conceitos">Conceitos</a> | <a href="#funcionalidades">Funcionalidades</a> | <a href="#tecnologias">Tecnologias</a> | <a href="#solução">Solução</a>
+     <a href="##conceitos">Conceitos</a> | <a href="##funcionalidades">Funcionalidades</a> | <a href="##tecnologias">Tecnologias</a> | <a href="##solução">Solução</a>
 </p>
 
 <img src="readme.gif">
