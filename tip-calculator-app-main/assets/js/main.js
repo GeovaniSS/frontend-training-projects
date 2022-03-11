@@ -73,6 +73,8 @@ const calculateTip = () => {
     const numberOfPeople = Number(inputNumberPeople.value)
     const tipPorcentage = Number(tipPorcentageText)/100
 
+    console.log(bill, numberOfPeople, tipPorcentage)
+
     if(!bill || !numberOfPeople || !tipPorcentage) return
     
     const tipAmountPerPerson = (bill * tipPorcentage) / numberOfPeople
