@@ -3,53 +3,48 @@ const inputNumberPeople = document.querySelector('#number-people')
 const inputTipPorcentage = document.querySelector('.custom')
 const tipPorcentageButtons = document.querySelector('.tip-buttons')
 const tipResetButton = document.querySelector('#reset-tip-calculation')
-let tipPorcentageText; 
-
-const invalidInputMessage = document.createElement('span')
-invalidInputMessage.innerText = "Can't be zero"
+let tipPorcentageText = null; 
+const invalidInputMessages = document.querySelectorAll('.invalid-message')
 
 const handleBillInputChange = () => {
     const inputBillIsValid = validateInputElement(inputBill) 
-    const billMessageContainer = document.querySelector('.bill-label')
+    const invalidMessage = invalidInputMessages[0]
 
     if(!inputBillIsValid) {
         inputBill.classList.add('error')
-        billMessageContainer.appendChild(invalidInputMessage)
+        invalidMessage.style.display = 'block'
         return
     }
 
-    if(billMessageContainer.contains(invalidInputMessage)) {
-        billMessageContainer.removeChild(invalidInputMessage)
-    } 
-
+    invalidMessage.style.display = 'none'
     inputBill.classList.remove('error')
-    calculateTip()
-}
-
-const handleNumberPeopleInputChange = () => {
-    const inputNumberPeopleIsValid = validateInputElement(inputNumberPeople)
-    const numberPeopleMessageContainer = document.querySelector('.number-people-label')
-    
-    if(!inputNumberPeopleIsValid) {
-        inputNumberPeople.classList.add('error')
-        numberPeopleMessageContainer.appendChild(invalidInputMessage)
-        return
-    }
-
-    if(numberPeopleMessageContainer.contains(invalidInputMessage)) {
-        numberPeopleMessageContainer.removeChild(invalidInputMessage)
-    }
-
-    inputNumberPeople.classList.remove('error')
     calculateTip()
 }
 
 const handleTipPorcentageInputChange = () => {
     const customTipInputIsValid = validateInputElement(inputTipPorcentage)
-    if(!customTipInputIsValid) return inputTipPorcentage.classList.add('error')
+    
+    if(!customTipInputIsValid) {
+        return inputTipPorcentage.classList.add('error')
+    }
+
     inputTipPorcentage.classList.remove('error')
     tipPorcentageText = inputTipPorcentage.value
+    calculateTip()
+}
 
+const handleNumberPeopleInputChange = () => {
+    const inputNumberPeopleIsValid = validateInputElement(inputNumberPeople)
+    const invalidMessage = invalidInputMessages[1]
+    
+    if(!inputNumberPeopleIsValid) {
+        inputNumberPeople.classList.add('error')
+        invalidMessage.style.display = 'block'
+        return
+    }
+
+    invalidMessage.style.display = 'none'
+    inputNumberPeople.classList.remove('error')
     calculateTip()
 }
 
@@ -101,10 +96,11 @@ const handleTipResetButtonClick = () => {
     inputNumberPeople.classList.remove('error')
     inputTipPorcentage.classList.remove('error')
 
-    const billMessageContainer = document.querySelector('.bill-label')
-    const numberPeopleMessageContainer = document.querySelector('.number-people-label')
-    billMessageContainer.removeChild(invalidInputMessage)
-    numberPeopleMessageContainer.removeChild(invalidInputMessage)
+    tipPorcentageText = null
+
+    for (let invalidMessage of invalidInputMessages) {
+        invalidMessage.style.display = 'none'
+    }
 
     const tipButtons = tipPorcentageButtons.children
     for (let tipButton of tipButtons) {
@@ -114,12 +110,12 @@ const handleTipResetButtonClick = () => {
     updateTipResult(0, 0)
 }
 
-
 inputBill.addEventListener('change', () => handleBillInputChange())
-inputNumberPeople.addEventListener('change', () => handleNumberPeopleInputChange())
 inputTipPorcentage.addEventListener('change', () => handleTipPorcentageInputChange())
+inputNumberPeople.addEventListener('change', () => handleNumberPeopleInputChange())
 tipPorcentageButtons.addEventListener('click', (e) => {
     const el = e.target
+    if (el.classList.contains('custom')) return
     handleTipPorcentageButtonClick(el)
 })
 tipResetButton.addEventListener('click', () => handleTipResetButtonClick())
