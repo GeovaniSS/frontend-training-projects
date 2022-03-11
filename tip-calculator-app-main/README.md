@@ -1,14 +1,12 @@
-# Tip calculator app
+<h1 style="text-align: center;">Tip calculator app</h1>
 
-O projeto a seguir é uma solução do [Desafio Tip calculator app do Frontend Mentor](https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX). 
-
-<p align="center">
-     <a href="#Conceitos">Conceitos</a> | <a href="#Funcionalidades">Funcionalidades</a> | <a href="#Tecnologias">Tecnologias</a> | <a href="#Solução">Solução</a>
+<p style="text-align: center;">
+     <a href="##Conceitos">Conceitos</a> | <a href="##Funcionalidades">Funcionalidades</a> | <a href="##Tecnologias">Tecnologias</a> | <a href="##Solução">Solução</a>
 </p>
 
-<img src=".gif">
-
-> Esse projeto foi desenvolvido com o intuito de praticar HTML, CSS e JS com os desafios do Frontend Mentor. 
+<img src="readme.gif">
+ 
+O projeto a seguir é uma solução do [Desafio Tip calculator app do Frontend Mentor](https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX). 
 
 ## Conceitos✏️
 Principais conceitos que foram usados no desenvolvimento do projeto:
@@ -33,6 +31,6 @@ As seguintes ferramentas foram usadas no desenvolvimento do projeto:
 - JavaScript
 
 ## Solução
-Verifique a solução do desafio [clicando aqui]() 
+Verifique a minha solução do desafio [clicando aqui]() 
 
 Feito com 💙 e ☕ por [Geovani Silva](https://www.linkedin.com/in/geovani-silva-21298921b/)
