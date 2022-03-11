@@ -8,7 +8,7 @@
  
 > O projeto a seguir é uma solução do [Desafio Tip calculator app do Frontend Mentor](https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX) feita para praticar HTML, CSS e JavaScript. 
 
-# Conceitos✏️
+## Conceitos✏️
 Principais conceitos que foram usados no desenvolvimento do projeto:
 - HTML Semântico
 - Flexbox
@@ -18,20 +18,20 @@ Principais conceitos que foram usados no desenvolvimento do projeto:
 - Propriedades e Eventos do DOM
 
 
-# Funcionalidades⚙️
+## Funcionalidades⚙️
 Principais funcionalidades do projeto: 
 - [x] Cálculo da gorjeta e do total da conta por pessoa
 - [x] Validação de inputs com valores igual zero
 - [x] Hover em todos os elementos interativos da página
 - [x] Botão Reset que limpa todos os elementos
 
-# Tecnologias🛠️
+## Tecnologias🛠️
 As seguintes ferramentas foram usadas no desenvolvimento do projeto:
 - HTML
 - CSS
 - JavaScript
 
-# Solução
+## Solução
 Verifique a minha solução do desafio [clicando aqui](https://tip-calculator-app-js.netlify.app/) 
 <hr>
 Feito com 💙 e ☕ por [Geovani Silva](https://www.linkedin.com/in/geovani-silva-21298921b/)<h1 align="center">Tip calculator app</h1>
