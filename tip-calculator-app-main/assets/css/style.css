@@ -31,7 +31,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    gap: 5rem;
+    gap: 4rem;
 }
 
 input {
@@ -42,6 +42,7 @@ input {
     color: var(--very-dark-cyan);
     border-radius: 4px;
     padding: 0.2rem 1.5rem;
+    transition: 0.1s;
 }
 
 input::placeholder {
@@ -262,10 +263,17 @@ section#container {
     color: var(--very-dark-cyan);
     padding: 0.7rem 0;
     font-size: 1.8rem;
+    opacity: 0.3;
     width: 100%;
 }
 
+.tip-result-container > button:hover {
+    background-color: var(--light-grayish-cyan);
+    color: var(--very-dark-cyan);
+}
+
 .tip-result-container > button.active {
+    opacity: 1.0;
     background-color: var(--strong-cyan);
     color: var(--very-dark-cyan);
 }
@@ -279,13 +287,12 @@ section#container {
 @media screen and (max-width: 800px) {
     section#container {
         flex-direction: column;
-        padding: 3rem 1rem;
+        padding: 3rem 4rem;
         gap: 2rem;
     }
 
     .tip-calculator-container {
-        padding: 1rem 2rem;
-        max-width: 350px;
+        max-width: 300px;
         min-height: 400px;
         margin: auto;
     }
@@ -296,15 +303,15 @@ section#container {
 
     .tip-result-container {
         min-width: 0px;
-        max-width: 310px; 
+        max-width: 300px; 
         margin: auto;
-        padding: 3rem 2rem 2rem 2rem;
+        padding: 3rem;
         justify-content: initial;
         gap: 20px;
     }
 
     .tip-result-container .tip-results {
-        gap: 0px;
+        gap: 10px;
     }
 
     .tip-results span {

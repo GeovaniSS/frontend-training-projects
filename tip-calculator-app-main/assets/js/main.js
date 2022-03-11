@@ -67,6 +67,8 @@ const handleTipPorcentageButtonClick = (el) => {
 }
 
 const calculateTip = () => {
+    changeTipResetButtonActiveState(true)
+
     const bill = Number(inputBill.value)
     const numberOfPeople = Number(inputNumberPeople.value)
     const tipPorcentage = Number(tipPorcentageText)/100
@@ -77,6 +79,10 @@ const calculateTip = () => {
     const totalPerPerson = (bill + bill * tipPorcentage) / numberOfPeople 
 
     updateTipResult(tipAmountPerPerson, totalPerPerson)
+}
+
+const changeTipResetButtonActiveState = (active) => {
+    active ? tipResetButton.classList.add('active') : tipResetButton.classList.remove('active')
 }
 
 const updateTipResult = (tipAmountPerPerson, totalPerPerson) => {
@@ -107,6 +113,7 @@ const handleTipResetButtonClick = () => {
         tipButton.classList.remove('active')
     }
 
+    changeTipResetButtonActiveState(false)
     updateTipResult(0, 0)
 }
 
