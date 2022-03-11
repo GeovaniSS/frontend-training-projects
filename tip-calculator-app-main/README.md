@@ -34,4 +34,4 @@ As seguintes ferramentas foram usadas no desenvolvimento do projeto:
 ## Solução
 Verifique a minha solução do desafio [clicando aqui](https://tip-calculator-app-js.netlify.app/) 
 <hr>
-Feito com 💙 e ☕ por [Geovani Silva](https://www.linkedin.com/in/geovani-silva-21298921b/)<h1 align="center">Tip calculator app</h1>
+Feito com 💙 e ☕ por [Geovani Silva](https://www.linkedin.com/in/geovani-silva-21298921b/)
