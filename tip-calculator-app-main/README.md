@@ -32,6 +32,6 @@ As seguintes ferramentas foram usadas no desenvolvimento do projeto:
 - JavaScript
 
 ## Solução
-Verifique a minha solução do desafio [clicando aqui](https://tip-calculator-app-js.netlify.app/) 
+Verifique a minha solução do desafio [clicando aqui](https://tip-calculator-app-js.netlify.app) 
 <hr>
 Feito com 💙 e ☕ por <a href="https://www.linkedin.com/in/geovani-silva-21298921b/">Geovani Silva</a>
