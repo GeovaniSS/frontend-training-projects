@@ -27,7 +27,6 @@ body {
   font-size: 1.6rem;
   font-family:'Red Hat Display', sans-serif;
   background-color: var(--pale-blue);
-  overflow: hidden;
 }
 
 h1, h4 {
@@ -49,12 +48,8 @@ p {
   color: var(--desatured-blue);
 }
 
-.pattern-bg {
-  background-image: url(/assets/images/pattern-background-mobile.svg);
-}
-
 .card-container {
-  position: absolute;
+  position: absolute; 
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -138,7 +133,6 @@ p {
 }
 
 .button.pay {
-  cursor: pointer;
   background-color: var(--very-pale-blue);
   color: var(--white);
   border-radius: 12px;
@@ -168,9 +162,6 @@ p {
 }
 
 @media screen and (min-width: 400px) {
-  .pattern-bg {
-  }
-
   .card-container {
     padding: 40px;
   }

@@ -10,32 +10,33 @@
 </head>
 <body>
   <main>
-    <div class="pattern-bg"></div>
-    <div class="container">
-      <div class="card-container">
-        <div class="card-image">
-          <img src="assets/images/illustration-hero.svg" alt="">
-        </div>
-        <div class="card-content">
-          <h1>Order Summary</h1>
-          <p class="card-text">
-            You can now listen to millions of songs, audiobooks, and podcasts on any
-            device anywhere you like!
-          </p>
-          <div class="card-price">
-            <div class="card-price-content">
-              <img src="assets/images/icon-music.svg" alt="Icon music">
-              <div class="plan-price">
-                <h4>Annual Plan</h4>
-                <p>$59.99/year</p>
-              </div>
+    <picture>
+      <source srcset="/assets/images/pattern-background-mobile.svg" media="(max-width: 375px)">
+      <img src="assets/images/pattern-background-desktop.svg" alt="pattern background">
+    </picture>
+    <div class="card-container">
+      <div class="card-image">
+        <img src="assets/images/illustration-hero.svg" alt="">
+      </div>
+      <div class="card-content">
+        <h1>Order Summary</h1>
+        <p class="card-text">
+          You can now listen to millions of songs, audiobooks, and podcasts on any
+          device anywhere you like!
+        </p>
+        <div class="card-price">
+          <div class="card-price-content">
+            <img src="assets/images/icon-music.svg" alt="Icon music">
+            <div class="plan-price">
+              <h4>Annual Plan</h4>
+              <p>$59.99/year</p>
             </div>
-            <a href="#" id="change-plan">Change</a>
           </div>
-          <button class="button pay">Proceed to Payment</button>
-          <button class="button cancel">Cancel Order</button>
+          <a href="#" id="change-plan">Change</a>
         </div>
-    </div>
+        <button class="button pay">Proceed to Payment</button>
+        <button class="button cancel">Cancel Order</button>
+      </div>
     </div>
   </main>
   <!-- <div class="attribution">
