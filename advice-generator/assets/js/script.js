@@ -1,6 +1,16 @@
 const adviceDice = document.querySelector('.advice-dice')
+const adviceDivider = document.querySelector('.advice-divider')
 
-const requestRandomAdvice = async() => {
+const changeAdviceDivider = () => {
+  adviceDivider.src = ''
+
+  if(window.innerWidth <= 500) 
+    return adviceDivider.src = 'assets/images/pattern-divider-mobile.svg'
+
+  adviceDivider.src = 'assets/images/pattern-divider-desktop.svg'
+}
+
+const requestRandomAdviceApi = async() => {
   try {
     const url = 'https://api.adviceslip.com/advice'
     const response = await fetch(url)
@@ -21,7 +31,11 @@ const loadRandomAdvice = randomAdvice => {
   adviceId.innerText = `Advice #${id}`
 
   const adviceText = document.querySelector('.advice-text')
-  adviceText.innerText = advice
+  adviceText.innerText = `“${advice}”`
 }
 
-adviceDice.addEventListener('click', requestRandomAdvice)
+requestRandomAdviceApi()
+
+window.addEventListener('load', changeAdviceDivider)
+window.addEventListener('resize', changeAdviceDivider)
+adviceDice.addEventListener('click', requestRandomAdviceApi)
